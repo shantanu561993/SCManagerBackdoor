@@ -12,9 +12,9 @@ The username that will be granted access. Must be in the format "domain\username
 Set-SCManagerBackdoor -Username "domain\monitoring" -RemoteComputer "domaincontroller.domain.com"
 .NOTES
 You need to run this function as a user that has local administrator on the target computer.
-.Author
-Shantanu Khandelwal @shantanukhande
-shantanukhandelwal@protonmail.com
+	Author : Shantanu Khandelwal 
+	Twitter : @shantanukhande
+	Email : shantanukhandelwal@protonmail.com
 #>
 Param(
 	[Parameter(Mandatory=$True)]
