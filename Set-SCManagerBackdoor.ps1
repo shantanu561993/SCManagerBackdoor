@@ -30,7 +30,6 @@ if (!$sid) {
 	return "[-] User $username cannot be resolved to a SID. Does the account exist?"
 	exit
 }
-write-host $sid
 $sddl = & $env:SystemRoot\System32\sc.exe \\$RemoteComputer sdshow scmanager
 if ($sddl -like "*$sid*"){
 Write-Output "[-] May be $Username already have SCManager access on $RemoteComputer"
@@ -38,20 +37,18 @@ Write-Output "[-] Remote Comuter replied with $sddl access mask."
 }
 $access_mask = "(A;;0xF003F;;;IU)"
 $access_mask = $access_mask.Replace("IU",$sid)
-Write-Output $access_mask
 $separator = "S:"
 $sddl_break = $sddl -split $separator, 0, "simplematch"
-Write-Output $sddl_break.Count
 if ($sddl_break.Count -eq 3){
     $finalsddl = $sddl_break[1]+$access_mask+"S:"+$sddl_break[2]
     $sddlset = & $env:SystemRoot\System32\sc.exe \\$RemoteComputer sdset scmanager $finalsddl
     if ($sddlset -notlike "*SUCCESS*") {
-	return "Permissions did not set"
+	return "[-] Permissions did not set"
     }
     else{
     $sddl = & $env:SystemRoot\System32\sc.exe \\$RemoteComputer sdshow scmanager
     if ($sddl -like "*$sid*"){
-        Write-Host "Permissions Set"
+        Write-Host "[+] Permissions Set"
       }
     }
 
