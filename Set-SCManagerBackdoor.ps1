@@ -4,8 +4,7 @@ function Set-SCManagerBackdoor() {
 Sets permissions on SCManager on remote computers so users can create a service. Can be used to Backdooring a remote computer.
 .DESCRIPTION
 The Set-SCManagerBackdoor function uses sc.exe on the remote machine to set permissions on SCManager.
-Computer names or IP addresses are expected as pipeline input, or may bepassed to the –RemoteComputer parameter. 
-Each computer is contacted sequentially, not in parallel.
+Computer names or IP addresses are expected as pipeline input, or may be passed to the –RemoteComputer parameter. 
 .PARAMETER Username
 The username that will be granted access. Must be in the format "domain\username"
 .EXAMPLE
